@@ -29,14 +29,19 @@ public class Gaulois {
 	}
 
 	@Override
-//	public String toString() {
-//		return "Gaulois [nom=" + nom + ", force=" + force + ", effetPotion=" + effetPotion + "]";
-//	}
+	public String toString() {
+		return "Gaulois [nom=" + nom + ", force=" + force + ", effetPotion=" + effetPotion + "]";
+	}
 
 	
+	
 	public static void main(String[] args) {
-		
-
+		Gaulois asterix = new Gaulois("Astérix", 8);
+		System.out.println(asterix.getNom());
+		System.out.println(asterix);
+		asterix.prendreParole();
+		asterix.parler("HA");
+		asterix.frapper(Romain romain);
 	}
 
 }
