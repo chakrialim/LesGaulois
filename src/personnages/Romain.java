@@ -41,9 +41,6 @@ public class Romain {
 		marcus.parler("Hii");
 		marcus.recevoirCoup(3);
 
-		
-				
-		
 	}
 
 	

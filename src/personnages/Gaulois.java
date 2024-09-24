@@ -29,7 +29,7 @@ public class Gaulois {
 	}
 	
 	public void boirePotion(int forcePotion) {
-		effetPotion += forcePotion;
+		effetPotion = forcePotion;
 		parler("Merci Druide, je sens que ma force est "+ forcePotion +" fois décuplée.");
 		
 	}
@@ -47,6 +47,7 @@ public class Gaulois {
 		System.out.println(asterix);
 		//asterix.prendreParole();
 		asterix.parler("HA");
+		
 		Romain caesar = new Romain ("Caesar",10);
 		System.out.println(caesar);
 		asterix.frapper(caesar);
