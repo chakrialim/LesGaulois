@@ -27,14 +27,42 @@ public class Romain {
 	}
 	
 	public void recevoirCoup(int forceCoup) {
+		forceToujoursPositive();
+		int forceAvant = force;
 		force -= forceCoup;
+		forceBienDiminue(forceAvant,force);
 		if (force > 0) {
 			parler("Aïe");
 		} else {
 			parler("J'abandonne...");
-
 		}
+		
+	}
 	
+	private boolean forceDiminue(int forceAvant, int forceApres) {
+		if (forceAvant > forceApres) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public boolean forceBienDiminue(int forceAvant, int forceApres) {
+		assert forceDiminue(forceAvant, forceApres);
+		return true;
+	}
+	private boolean forcePositive() {
+		if (force >= 0) {
+			return true;
+		} else {
+			return false;
+		}
+		
+	}
+	
+	public boolean forceToujoursPositive() {
+		assert forcePositive();
+		return true;
 	}
 	@Override
 	public String toString() {
@@ -45,6 +73,9 @@ public class Romain {
 		Romain marcus = new Romain("Marcus",9);
 		marcus.parler("Hii");
 		marcus.recevoirCoup(3);
+		Romain minus = new Romain("Minus", 6);
+		minus.recevoirCoup(3);
+		
 
 	}
 
