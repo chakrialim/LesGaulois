@@ -22,11 +22,12 @@ public class Village {
 
 	public Village(String nom, int nbVillageoisMaximum) {
 		this.nom = nom;
+		this.nbVillageoisMaximum = nbVillageoisMaximum;
 		villageois = new Gaulois[nbVillageoisMaximum];
 	}
 	
 	public void ajouterHabitant(Gaulois gaulois) {
-		if (nbVillageois<nbVillageoisMaximum) {
+		if (nbVillageois < nbVillageoisMaximum) {
 			villageois[nbVillageois] = gaulois;
 			nbVillageois++;
 		}
@@ -37,20 +38,16 @@ public class Village {
 		return villageois[nbVillageois];
 	}
 	
-	@Override
-	public String toString() {
-		// TODO Auto-generated method stub
-		return super.toString();
-	}
+
 	
 	
 	
 	public void afficherVillageois(Village village) {
-		System.out.println("Dans "+village.getnom()+" du chef "+village.getchef()+ " vivent les légendaires gaulois: " + villageois);
+		System.out.println("Dans "+village.getnom()+" du chef "+village.getchef()+ " vivent les lï¿½gendaires gaulois: ");
 		
-		for (int i = 0; i < nbVillageois; i++) {
+		for (int i = 0; i <= nbVillageois; i++) {
 			if (villageois[i]!= null) {
-				System.out.println("-"+villageois[i]);
+				System.out.println("- "+villageois[i].getNom());
 			}
 		}
 
@@ -70,9 +67,9 @@ public class Village {
 
 
 	public static void main(String[] args) {
-		Village village = new Village("Village des Irréductibles", 30);
+		Village village = new Village("Village des Irrï¿½ductibles", 30);
 //		Gaulois gaulois = village.trouverHabitant(30)
-//		Exception car liste va de 0 à 29 donc out of bounds
+//		Exception car liste va de 0 ï¿½ 29 donc out of bounds
 		Chef abraracourcix = new Chef("Abraracourcix", 6, village);
 		village.setChef(abraracourcix);
 		Gaulois asterix = new Gaulois("Asterix",8);
@@ -80,11 +77,12 @@ public class Village {
 		
 //		Gaulois gaulois = village.trouverHabitant(1);
 //		System.out.println(gaulois);
-//		resultat obtenu est null car asterix est trié à l'indice 0 du tableau et non pas 1
+//		resultat obtenu est null car asterix est triï¿½ ï¿½ l'indice 0 du tableau et non pas 1
 		
-		Gaulois obelix = new Gaulois("Obélix",25);
-		village.ajouterHabitant(asterix);
+		Gaulois obelix = new Gaulois("Obï¿½lix",25);
+		village.ajouterHabitant(obelix);
 		village.afficherVillageois(village);
+	
 	}
 	
 	
