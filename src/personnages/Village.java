@@ -1,5 +1,4 @@
 package personnages;
-import personnages.Chef;
 
 public class Village {
 	private String nom;

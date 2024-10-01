@@ -20,10 +20,11 @@ public class Scenario {
 //		asterix.frapper(minus);
 		
 		panoramix.parler("Je vais aller préparer une petite potion...");
-		int potion = panoramix.booster(obelix);
+		panoramix.preparerPotion();
+		panoramix.booster(obelix);
 		obelix.parler("Par Bélénos, ce n'est pas juste !");
-		asterix.boirePotion(potion);
 		asterix.parler("Bonjour");
+		panoramix.booster(asterix);
 		minus.parler("UN GAU... UN GAUGAU...");
 		asterix.frapper(minus);
 		
