@@ -1,12 +1,12 @@
 package personnages;
 
 public class Gaulois {
+	private static final int MAX_EQUIPEMENTS = 100;
 	private String nom;
 	private int effetPotion = 1;
 	private int force;
-	private int nbTrophees;
-	Equipement[] trophees = new Equipement[100];;
-	
+	private int nbTrophees = 0;
+	Equipement[] trophees = new Equipement[MAX_EQUIPEMENTS];
 
 	public Gaulois(String nom, int force) {
 		this.nom = nom;
@@ -35,20 +35,48 @@ public class Gaulois {
 //	}
 
 	public void frapper(Romain romain) {
-        
+
 		System.out.println(nom + " envoie un grand coup dans la m�choire de " + romain.getNom());
-		trophees = romain.recevoirCoup((force / 3) * effetPotion);
-		for (int i = 0; trophees != null && i < trophees.length; i++, nbTrophees++) {
-			if (nbTrophees < trophees.length) {
-				trophees[nbTrophees] = trophees[i];
+		Equipement[] tropheesAStocker = romain.recevoirCoup((force / 3) * effetPotion);
+		if (tropheesAStocker != null) {
+			for (int i = 0; i < tropheesAStocker.length && tropheesAStocker[i] != null; i++) {
+				if (nbTrophees < tropheesAStocker.length) {
+					trophees[nbTrophees] = tropheesAStocker[i];
+					nbTrophees++;
+				} else {
+					break;
+				}
 			}
-			
+
 		}
 	}
 
 	public void boirePotion(int forcePotion) {
 		effetPotion = forcePotion;
 		parler("Merci Druide, je sens que ma force est " + forcePotion + " fois décuplée.");
+
+	}
+
+	public void faireUneDonnation(Musee musee) {
+		if (nbTrophees > 0) {
+			StringBuilder texte = new StringBuilder();
+			texte.append("Je donne au musee tous mes trophees: ");
+			for (int i = 0; i < trophees.length; i++) {
+				if (trophees[i] != null) {
+					texte.append("\n- " + trophees[i]);
+					musee.donnerTrophees(this, trophees[i]);
+				}
+
+			}
+			parler(texte);
+		} else {
+			System.out.println("Je n'ai rien a donner\n");
+		}
+
+	}
+
+	private void parler(StringBuilder texte) {
+		System.out.println(prendreParole() + "<<" + texte + ">>");
 
 	}
 
