@@ -8,10 +8,18 @@ public class Romain {
 	private int nbEquipement = 0;
 	private boolean vainqueur = false;
 
+	private boolean forcePositive() {
+		return (force >= 0);
+	}
+
+	private boolean isInvariantVerified() {
+		return forcePositive();
+	}
+
 	public Romain(String nom, int force) {
 		this.nom = nom;
 		this.force = force;
-		assert forcePositive();
+		assert isInvariantVerified();
 	}
 
 	public String getNom() {
@@ -36,23 +44,22 @@ public class Romain {
 	}
 
 //	public void recevoirCoup(int forceCoup) {
-//		assert (force>0);
+//		assert force > 0;
 //		int forceAvant = force;
 //		force -= forceCoup;
-//		assert (forceAvant<force);
-//		assert forcePositive();
+//		assert forceAvant > force;
+//		assert isInvariantVerified();
 //		if (force > 0) {
 //			parler("Aie");
 //		} else {
 //			parler("J'abandonne...");
 //		}
-//		
 //	}
 
 	public Equipement[] recevoirCoup(int forceCoup) {
 		Equipement[] equipementEjecte = null;
 		// pr�condition
-		assert force > 0;
+		assert (force > 0);
 		int oldForce = force;
 		forceCoup = calculResistanceEquipement(forceCoup);
 		if (forceCoup <= 0) {
@@ -70,7 +77,6 @@ public class Romain {
 				vainqueur = true;
 			}
 		}
-
 //		switch (force) {
 //		case 0:
 //			parler("A�e");
@@ -81,9 +87,7 @@ public class Romain {
 //			break;
 //		}
 		// post condition la force a diminu�e
-
 		assert force < oldForce;
-
 		return equipementEjecte;
 	}
 
@@ -99,15 +103,6 @@ public class Romain {
 			}
 		}
 		return equipementEjecte;
-	}
-
-	public boolean forcePositive() {
-		boolean forcePositive = false;
-		if (force >= 0) {
-			forcePositive = true;
-		}
-		return forcePositive;
-
 	}
 
 	@Override

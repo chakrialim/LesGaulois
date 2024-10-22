@@ -22,8 +22,9 @@ public class Gaulois {
 	}
 
 //	private String prendreParole() {
-//		return "Le gaulois " + nom + " : ";
+//		return "Le gaulois " + nom + " : "; 
 //	}
+
 	private String prendreParole() {
 		return "Le gaulois " + nom + " : ";
 	}
@@ -35,7 +36,6 @@ public class Gaulois {
 //	}
 
 	public void frapper(Romain romain) {
-
 		System.out.println(nom + " envoie un grand coup dans la m�choire de " + romain.getNom());
 		Equipement[] tropheesAStocker = romain.recevoirCoup((force / 3) * effetPotion);
 		if (tropheesAStocker != null) {
@@ -97,6 +97,6 @@ public class Gaulois {
 		asterix.frapper(caesar);
 		asterix.boirePotion(5);
 
-	}
+	} 
 
 }

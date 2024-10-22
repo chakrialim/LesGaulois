@@ -5,7 +5,7 @@ import personnages.Equipement;
 import personnages.Gaulois;
 import personnages.Musee;
 import personnages.Romain;
-//import villagegaulois.Musee;
+
 
 public class Scenario {
 
@@ -34,7 +34,6 @@ public class Scenario {
 		} while (!(milexcus.isVainqueur()));
 		
 //		Partie a decommenter
-		
 		Musee musee = new Musee();
 		asterix.faireUneDonnation(musee);
 		System.out.println(musee.extraireInstructionsOCaml());
